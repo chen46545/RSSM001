@@ -1,10 +1,9 @@
 server:
-  port: 8787
-
+  port: 8080
 spring:
     datasource:
-        name: mytest
-        url: jdbc:mysql://localhost:3306/mytest
+        name: farm
+        url: jdbc:mysql://127.0.0.1:3306/farm
         username: root
         password: root
         type: com.alibaba.druid.pool.DruidDataSource
