@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.app.mapper.ConsumerMapper" >
+  <resultMap id="BaseResultMap" type="com.app.model.Consumer" >
+    <id column="cons_id" property="consId" jdbcType="INTEGER" />
+    <result column="cons_name" property="consName" jdbcType="VARCHAR" />
+    <result column="cons_age" property="consAge" jdbcType="INTEGER" />
+    <result column="cons_sex" property="consSex" jdbcType="VARCHAR" />
+    <result column="cons_phone" property="consPhone" jdbcType="VARCHAR" />
+    <result column="cons_reminding" property="consReminding" jdbcType="VARCHAR" />
+    <result column="cons_readdress" property="consReaddress" jdbcType="VARCHAR" />
+    <result column="dev1" property="dev1" jdbcType="VARCHAR" />
+    <result column="dev2" property="dev2" jdbcType="VARCHAR" />
+    <result column="cons_address" property="consAddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cons_id, cons_name, cons_age, cons_sex, cons_phone, cons_reminding, cons_readdress, 
+    dev1, dev2, cons_address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_consumer
+    where cons_id = #{consId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_consumer
+    where cons_id = #{consId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.app.model.Consumer" >
+    insert into t_consumer (cons_id, cons_name, cons_age, 
+      cons_sex, cons_phone, cons_reminding, 
+      cons_readdress, dev1, dev2, 
+      cons_address)
+    values (#{consId,jdbcType=INTEGER}, #{consName,jdbcType=VARCHAR}, #{consAge,jdbcType=INTEGER}, 
+      #{consSex,jdbcType=VARCHAR}, #{consPhone,jdbcType=VARCHAR}, #{consReminding,jdbcType=VARCHAR}, 
+      #{consReaddress,jdbcType=VARCHAR}, #{dev1,jdbcType=VARCHAR}, #{dev2,jdbcType=VARCHAR}, 
+      #{consAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.app.model.Consumer" >
+    insert into t_consumer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="consId != null" >
+        cons_id,
+      </if>
+      <if test="consName != null" >
+        cons_name,
+      </if>
+      <if test="consAge != null" >
+        cons_age,
+      </if>
+      <if test="consSex != null" >
+        cons_sex,
+      </if>
+      <if test="consPhone != null" >
+        cons_phone,
+      </if>
+      <if test="consReminding != null" >
+        cons_reminding,
+      </if>
+      <if test="consReaddress != null" >
+        cons_readdress,
+      </if>
+      <if test="dev1 != null" >
+        dev1,
+      </if>
+      <if test="dev2 != null" >
+        dev2,
+      </if>
+      <if test="consAddress != null" >
+        cons_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="consId != null" >
+        #{consId,jdbcType=INTEGER},
+      </if>
+      <if test="consName != null" >
+        #{consName,jdbcType=VARCHAR},
+      </if>
+      <if test="consAge != null" >
+        #{consAge,jdbcType=INTEGER},
+      </if>
+      <if test="consSex != null" >
+        #{consSex,jdbcType=VARCHAR},
+      </if>
+      <if test="consPhone != null" >
+        #{consPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="consReminding != null" >
+        #{consReminding,jdbcType=VARCHAR},
+      </if>
+      <if test="consReaddress != null" >
+        #{consReaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dev1 != null" >
+        #{dev1,jdbcType=VARCHAR},
+      </if>
+      <if test="dev2 != null" >
+        #{dev2,jdbcType=VARCHAR},
+      </if>
+      <if test="consAddress != null" >
+        #{consAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.Consumer" >
+    update t_consumer
+    <set >
+      <if test="consName != null" >
+        cons_name = #{consName,jdbcType=VARCHAR},
+      </if>
+      <if test="consAge != null" >
+        cons_age = #{consAge,jdbcType=INTEGER},
+      </if>
+      <if test="consSex != null" >
+        cons_sex = #{consSex,jdbcType=VARCHAR},
+      </if>
+      <if test="consPhone != null" >
+        cons_phone = #{consPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="consReminding != null" >
+        cons_reminding = #{consReminding,jdbcType=VARCHAR},
+      </if>
+      <if test="consReaddress != null" >
+        cons_readdress = #{consReaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dev1 != null" >
+        dev1 = #{dev1,jdbcType=VARCHAR},
+      </if>
+      <if test="dev2 != null" >
+        dev2 = #{dev2,jdbcType=VARCHAR},
+      </if>
+      <if test="consAddress != null" >
+        cons_address = #{consAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cons_id = #{consId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.app.model.Consumer" >
+    update t_consumer
+    set cons_name = #{consName,jdbcType=VARCHAR},
+      cons_age = #{consAge,jdbcType=INTEGER},
+      cons_sex = #{consSex,jdbcType=VARCHAR},
+      cons_phone = #{consPhone,jdbcType=VARCHAR},
+      cons_reminding = #{consReminding,jdbcType=VARCHAR},
+      cons_readdress = #{consReaddress,jdbcType=VARCHAR},
+      dev1 = #{dev1,jdbcType=VARCHAR},
+      dev2 = #{dev2,jdbcType=VARCHAR},
+      cons_address = #{consAddress,jdbcType=VARCHAR}
+    where cons_id = #{consId,jdbcType=INTEGER}
+  </update>
+</mapper>
